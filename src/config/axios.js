@@ -12,7 +12,7 @@
 
 import axios from 'axios';
 
-const AxiosBackend = axios.create({baseURL:'https://drmeet.online:5000'});
+const AxiosBackend = axios.create({baseURL:'https://drmeet.online'});
 
 AxiosBackend.interceptors.request.use((request) => {
   request.withCredentials = true;
