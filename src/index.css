@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+@layer base {
+  input[type='text'] ,
+  input[type='password'] ,
+  input[type='email'] ,
+  input[type='number'] ,
+  input[type='url'] ,
+  input[type='date'] ,
+  input[type='datetime-local'] ,
+  input[type='month'] ,
+  input[type='week'] ,
+  input[type='time'] ,
+  input[type='search'] ,
+  input[type='tel'] ,
+  [multiple] ,
+  select ,
+  textarea
+   {
+    @apply w-full border-primary rounded-lg shadow-sm focus:ring-primary-600
+  }
+  input[type='radio'] ,
+  input[type='checkbox'] {
+    @apply border-primary rounded-lg shadow-sm focus:border-primary-600 hover:ring-primary-600
+  }
+}
+
+
+
+@layer utilities {
+  .error {   
+    @apply text-red-700 text-sm
+  }
+  .success {   
+    @apply text-emerald-700 text-sm
+  }
+
+  .ant-btn {
+    @apply border border-red-700
+  }
+  /* ... */
+}
+
+/* .ant-col {
+  border: 2px solid red;
+} */
