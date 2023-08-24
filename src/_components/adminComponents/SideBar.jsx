@@ -6,7 +6,7 @@ import { FaUserDoctor, FaHospitalUser, FaUserInjured } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from 'react-redux'
 import { clearCredentials } from '../../slices/authSlice'
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 
 
 
@@ -18,7 +18,7 @@ function SideBar() {
     const dispatch = useDispatch()
 
     const logoutHandler = async () => {
-        const response = await axios.get('/api/admin/logout')
+        const response = await AxiosBackend.get('/api/admin/logout')
         if (response.data.success)
             dispatch(clearCredentials())
         navigate('/')

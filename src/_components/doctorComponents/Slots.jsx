@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { SiRescuetime } from 'react-icons/si'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 
 const Slots = () => {
     const [SlotsCount, setSlotsCount] = useState(0)
 
     const getSlotsCount = async () => {
-        const response = await axios.get('/api/doc/slots')
+        const response = await AxiosBackend.get('/api/doc/slots')
         setSlotsCount(response.data.count)
     }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import AxiosBackend from '../../config/axios';
 import {
   AreaChart,
   Area,
@@ -14,7 +14,7 @@ const AppointmetntsChart = () => {
   const [data, setData] = useState([])
 
   const getAppointments = async () => {
-    const response = await axios.get('/api/admin/appointments/data')
+    const response = await AxiosBackend.get('/api/admin/appointments/data')
     setData(response.data.data)
   }
 

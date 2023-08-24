@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Form, Button, TimePicker, Select, InputNumber, ConfigProvider } from "antd";
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,7 @@ const AddScheduleForm = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('/api/doc/schedule', { ...values })
+      const response = await AxiosBackend.post('/api/doc/schedule', { ...values })
       dispatch(setSchedules(response.data.schedules))
       if (response.data.success)
         toast.success(response.data.msg)

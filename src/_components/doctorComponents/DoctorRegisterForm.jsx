@@ -5,7 +5,7 @@ import { storage } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 } from "uuid"
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 import Spinner from "../Spinner";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -31,7 +31,7 @@ function DoctorRegister() {
   }, [])
 
   const getAllDepartments = async () => {
-    const response = await axios.get(`/api/admin/department`)
+    const response = await AxiosBackend.get(`/api/admin/department`)
     setDepartments(response.data.departments)
   }
 
@@ -82,7 +82,7 @@ function DoctorRegister() {
       await uploadAvatar()
       await uploadProof()
       try {
-        const response = await axios.post(`/api/doc/reg`, { ...values })
+        const response = await AxiosBackend.post(`/api/doc/reg`, { ...values })
         setLoginSuccess(response.data.msg)
         setTimeout(() => {
           navigate('/')

@@ -1,7 +1,7 @@
 import { useFormik } from "formik"
 import {object, string} from 'yup'
 import { useState } from "react";
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 import Spinner from "../Spinner";
 
 const SearchDoctor = ({ setDoctors }) => {
@@ -20,7 +20,7 @@ const SearchDoctor = ({ setDoctors }) => {
             setErr('')
 
             try {
-                const response = await axios.get(`/api/user/doctors/search?q=${values.search}`)
+                const response = await AxiosBackend.get(`/api/user/doctors/search?q=${values.search}`)
                 setDoctors(response.data.doctors)
             } catch (error) {
                 setErr(error.response.data.err)

@@ -3,14 +3,14 @@ import 'react-calendar/dist/Calendar.css';
 import './CalenderTiShowAppointments.css'
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import AxiosBackend from '../../config/axios'
 
 
 const CalenderToShowAppointments = ({ date, setDate }) => {
   const [givenDates, setgivenDates] = useState()
 
   const appointmetDates = async () => {
-    const response = await axios.get('/api/doc/appointment/dates')
+    const response = await AxiosBackend.get('/api/doc/appointment/dates')
     setgivenDates(response.data.dates.map(d => moment(d.date)))
   }
 

@@ -1,7 +1,7 @@
 import { useFormik } from "formik"
 import { object, string, ref } from 'yup'
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 import Spinner from "../Spinner";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,7 +44,7 @@ const UserRegisterForm = () => {
       setSubmitting(true)
       setErr('')
       try {
-        const response = await axios.post(`/api/user/reg`, { ...values })
+        const response = await AxiosBackend.post(`/api/user/reg`, { ...values })
         dispatch(setCredentials({ ...response.data }))
         navigate('/')
       } catch (error) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ApprovedDoctorsTable } from '../../_components/adminComponents'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import Spinner from '../../_components/Spinner'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -9,7 +9,7 @@ function ApprovedDoctors() {
     const [data, setData] = useState('')
 
     const getApprovedDoctors = async () => {
-        const response = await axios.get(`/api/admin/doctors/approved`)
+        const response = await AxiosBackend.get(`/api/admin/doctors/approved`)
         setData(response.data.appovedDoctors)
     }
 
@@ -18,7 +18,7 @@ function ApprovedDoctors() {
     }, [])
 
     const handleDelete = async (id) => {
-        const response = await axios.put(`/api/admin/block/doctor/${id}`)
+        const response = await AxiosBackend.put(`/api/admin/block/doctor/${id}`)
         toast.success(response.data.msg)
         getApprovedDoctors()
     }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { DoctorCard, SearchDoctor } from "../../_components/userComponents"
-import axios from "axios"
+import AxiosBackend from '../../config/axios'
 import Spinner from "../../_components/Spinner"
 import { useLocation, useSearchParams } from 'react-router-dom';
 
@@ -13,9 +13,9 @@ const DoctorsPage = () => {
   const getAllDoctors = async () => {
     let response
     if (param) {
-      response = await axios.get(`/api/user/doctors/${param}`)
+      response = await AxiosBackend.get(`/api/user/doctors/${param}`)
     } else {
-      response = await axios.get('/api/user/doctors')
+      response = await AxiosBackend.get('/api/user/doctors')
     }
     setDoctors(response.data.doctors)
   }

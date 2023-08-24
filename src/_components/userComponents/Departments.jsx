@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 import DepartmentCard from "./DepartmentCard"
-import axios from "axios"
 import Spinner from "../Spinner"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+import AxiosBackend from "../../config/axios";
 
 const Departments = () => {
   const [departments, setDepartments] = useState()
 
+
   const getAllDepartments = async () => {
-    const response = await axios.get('/api/user/departments')
+    const response = await AxiosBackend.get('/api/user/departments')
     setDepartments(response.data.departments)
   }
 

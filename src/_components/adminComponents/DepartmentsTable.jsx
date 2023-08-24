@@ -1,8 +1,7 @@
-import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { CgOptions } from "react-icons/cg";
-
+import AxiosBackend from '../../config/axios';
 
 
 function DepartmentsTable( props ) {
@@ -10,7 +9,7 @@ function DepartmentsTable( props ) {
     
 
     const getAllDepartments = async () => {
-        const response = await axios.get(`/api/admin/department`)
+        const response = await AxiosBackend.get(`/api/admin/department`)
         setData(response.data.departments)
     }
 

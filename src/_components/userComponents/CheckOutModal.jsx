@@ -1,4 +1,4 @@
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import toast, { Toaster } from 'react-hot-toast';
@@ -8,7 +8,7 @@ const CheckOutModal = ({ setShowModal, docId, date, timeId }) => {
 
     const getAppointmentDetails = async (docId, date, timeId) => {
         try {
-            const response = await axios.post('/api/user/appointment/details', { docId, date, timeId })
+            const response = await AxiosBackend.post('/api/user/appointment/details', { docId, date, timeId })
             setDetails(response.data.details)
         } catch (error) {
             setShowModal(false)

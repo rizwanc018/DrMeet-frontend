@@ -1,7 +1,7 @@
 import React from 'react'
 import { PatientsTable } from '../../_components/adminComponents'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import Spinner from '../../_components/Spinner'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -9,7 +9,7 @@ function Patients() {
     const [data, setData] = useState('')
 
     const getAllPatients = async () => {
-        const response = await axios.get(`/api/admin/patients/`)
+        const response = await AxiosBackend.get(`/api/admin/patients/`)
         setData(response.data.patients)
     }
 
@@ -18,7 +18,7 @@ function Patients() {
     }, [])
 
     const handleBlock = async (id) => {
-        const response = await axios.put(`/api/admin/block/patient/${id}`)
+        const response = await AxiosBackend.put(`/api/admin/block/patient/${id}`)
         toast.success(response.data.msg)
         getAllPatients()
     }

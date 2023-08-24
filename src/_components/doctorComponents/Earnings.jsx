@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { BsCashStack } from 'react-icons/bs'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 
 const Earnings = () => {
     const [EarningsCount, setEarningsCount] = useState(0)
 
     const getEarningsCount = async () => {
-        const response = await axios.get('/api/doc/earning')
+        const response = await AxiosBackend.get('/api/doc/earning')
         setEarningsCount(response.data.earnings)
     }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import {
     PieChart,
     Pie,
@@ -16,7 +16,7 @@ const DonutChart = () => {
     const [data, setData] = useState([])
 
     const getAppointmentsPerWeekDay = async () => {
-        const response = await axios.get('/api/admin/appointments/weekday/data')
+        const response = await AxiosBackend.get('/api/admin/appointments/weekday/data')
         setData(response.data.data)
     }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ScheduleTable, WeekDaysHeader } from '../../_components/doctorComponents'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import toast, { Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from "react-redux";
 import { setSchedules } from '../../slices/scheduleSlice';
@@ -13,7 +13,7 @@ function DoctorHome() {
   const { schedules } = useSelector(state => state.schedule)
 
   const getDcotorSchedules = async () => {
-    const response = await axios.get(`/api/doc/schedule/${day}`)
+    const response = await AxiosBackend.get(`/api/doc/schedule/${day}`)
     dispatch(setSchedules(response.data.schedules))
   }
 
@@ -23,7 +23,7 @@ function DoctorHome() {
 
   const handleDeleteSchedule = async (id) => {
     try {
-      const response = await axios.delete(`/api/doc/schedule/${id}`)
+      const response = await AxiosBackend.delete(`/api/doc/schedule/${id}`)
       toast.success(response.data.msg)
       dispatch(setSchedules(response.data.schedules))
     } catch (error) {

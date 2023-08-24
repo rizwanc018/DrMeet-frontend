@@ -1,4 +1,4 @@
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +29,7 @@ function AdminLogin() {
         setEmailValid(true)
         setPasswordValid(true)
         const body = { email, password }
-        let response = await axios.post(`/api/admin/auth`, body)
+        let response = await AxiosBackend.post(`/api/admin/auth`, body)
         dispatch(setCredentials({ ...response.data }))
         setShowSpinner(false)
         if (response.data.isAdmin) navigate('/admin')

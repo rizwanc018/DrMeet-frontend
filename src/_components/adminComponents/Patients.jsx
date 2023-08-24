@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { FaUserInjured } from 'react-icons/fa6'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 
 const Patients = () => {
     const [PatientsCount, setPatientsCount] = useState(0)
 
     const getPatientsCount = async () => {
-        const response = await axios.get('/api/admin/patient/count')
+        const response = await AxiosBackend.get('/api/admin/patient/count')
         setPatientsCount(response.data.count)
     }
 

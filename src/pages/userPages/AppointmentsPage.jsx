@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import moment from 'moment'
 import Appointments from '../../_components/userComponents/Appointments'
 import Spinner from "../../_components/Spinner";
@@ -12,9 +12,9 @@ const AppointmentsPage = () => {
     const getUpcomingAppointments = async (date) => {
         let response
         if (openTab === 1) {
-            response = await axios.get('/api/user/appointments')
+            response = await AxiosBackend.get('/api/user/appointments')
         } else {
-            response = await axios.get('/api/user/appointments/all')
+            response = await AxiosBackend.get('/api/user/appointments/all')
         }
         setData(response.data.appointments)
     }

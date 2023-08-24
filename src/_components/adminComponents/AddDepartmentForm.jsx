@@ -1,11 +1,12 @@
 import { useFormik } from "formik"
 import { object, string, mixed } from 'yup'
-import axios from "axios";
+import AxiosBackend from '../../config/axios'
 import Spinner from "../Spinner";
 import { useEffect, useState } from "react"
 import { storage } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 } from "uuid"
+
 
 
 function AddDepartmentForm() {
@@ -33,7 +34,7 @@ function AddDepartmentForm() {
                 setErr('')
                 setSuccess('')
                 await uploadAvatar()
-                const response = await axios.post(`/api/admin/department/add`, { ...values })
+                const response = await AxiosBackend.post(`/api/admin/department/add`, { ...values })
                 setSuccess(response.data.msg)
                 values.name = ''
                 formik.values.description = ''

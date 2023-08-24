@@ -1,9 +1,10 @@
 import moment from 'moment'
 import { useMemo, useState } from 'react'
 import { useTable } from 'react-table'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import toast, { Toaster } from 'react-hot-toast'
 import Swal from 'sweetalert2'
+
 
 
 const Appointments = ({ data, getUpcomingAppointments }) => {
@@ -30,7 +31,7 @@ const Appointments = ({ data, getUpcomingAppointments }) => {
         if (today.isBefore(oneDayBeforeAppointment)) {
             try {
                 setShowSpinner(true)
-                const response = await axios.post('/api/stripe/refund', { appointmentId, payment_intent })
+                const response = await AxiosBackend.post('/api/stripe/refund', { appointmentId, payment_intent })
                 if (response.data.success) {
                     setShowSpinner(false)
                     toast.success(response.data.msg)

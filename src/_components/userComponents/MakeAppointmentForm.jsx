@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './makeAppointmentForm.css'
-import axios from 'axios';
+import AxiosBackend from '../../config/axios'
 import Spinner from '../Spinner'
 import moment from 'moment';
 
@@ -29,7 +29,7 @@ const MakeAppointmentForm = ({ schedule, id }) => {
         setLoading(true)
         setDate(date)
         try {
-            const response = await axios.post('/api/user/schedule/times', { docId, date })
+            const response = await AxiosBackend.post('/api/user/schedule/times', { docId, date })
             if (response.data.timesArray) setShowTimeSelector(true)
             setTimes(response.data.timesArray);
         } catch (error) {
@@ -47,7 +47,7 @@ const MakeAppointmentForm = ({ schedule, id }) => {
         setShowSpinner(true)
 
         try {
-            const response = await axios.post(`/api/stripe/create-checkout-session`, { docId, date, timeId })
+            const response = await AxiosBackend.post(`/api/stripe/create-checkout-session`, { docId, date, timeId })
             if (response.data.url) window.location.href = response.data.url
         } catch (error) {
             setShowSpinner(false)

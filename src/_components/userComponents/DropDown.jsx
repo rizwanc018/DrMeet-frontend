@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Menu, Transition } from '@headlessui/react'
@@ -23,7 +23,7 @@ function DropDown({handleShowNavMenu}) {
     const { userInfo } = useSelector(state => state.auth)
 
     const logoutHandler = async () => {
-        const response = await axios.get('/api/user/logout')
+        const response = await AxiosBackend.get('/api/user/logout')
         if (response.data.success)
             dispatch(clearCredentials())
         navigate('/')

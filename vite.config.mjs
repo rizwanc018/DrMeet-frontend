@@ -30,9 +30,9 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
-    proxy: {
-      "/api": "https://drmeet.online"
-    }
+    // proxy: {
+    //   "/api": "https://drmeet.online"
+    // }
   },
   optimizeDeps: {
     exclude: ['js-big-decimal']

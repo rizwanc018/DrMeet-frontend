@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { IoCalendar } from 'react-icons/io5'
-import axios from 'axios'
+import AxiosBackend from '../../config/axios'
 
 const Appointments = () => {
     const [AppointmentsCount, setAppointmentsCount] = useState(0)
 
     const getAppointmentsCount = async () => {
-        const response = await axios.get('/api/doc/appointment/count')
+        const response = await AxiosBackend.get('/api/doc/appointment/count')
         setAppointmentsCount(response.data.count)
     }
 

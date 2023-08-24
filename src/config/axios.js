@@ -1,8 +1,23 @@
+// import axios from 'axios';
+
+// export const AxiosBackend = axios.create({baseURL:'http://localhost:5000'})
+
+// axios.interceptors.request.use((request) => {
+//   request.withCredentials = true;
+//   return request;
+// });
+
+
+// export default axios;
+
 import axios from 'axios';
 
-axios.interceptors.request.use((request) => {
+const AxiosBackend = axios.create({baseURL:'http://localhost:5000'});
+
+AxiosBackend.interceptors.request.use((request) => {
   request.withCredentials = true;
   return request;
 });
 
-export default axios;
+export default AxiosBackend;
+

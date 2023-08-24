@@ -1,6 +1,6 @@
 import { AppointmentsBooked, CalenderToShowAppointments } from "../../_components/doctorComponents"
 import { useEffect, useState, } from "react"
-import axios from "axios"
+import AxiosBackend from '../../config/axios'
 import moment from "moment"
 import Spinner from '../../_components/Spinner'
 
@@ -9,7 +9,7 @@ const Appointments = () => {
   const [data, setData] = useState([])
 
   const getAppointments = async (date) => {
-    const response = await axios.post('/api/doc/appointments', { date })
+    const response = await AxiosBackend.post('/api/doc/appointments', { date })
     setData(response.data.appointments)
   }
 
