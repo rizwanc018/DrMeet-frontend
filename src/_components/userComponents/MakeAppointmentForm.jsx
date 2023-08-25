@@ -30,6 +30,7 @@ const MakeAppointmentForm = ({ schedule, id }) => {
         setShowBooking(false)
         setLoading(true)
         setDate(date)
+        console.log({ docId, date })
         try {
             const response = await AxiosBackend.post('/api/user/schedule/times', { docId, date })
             if (response.data.timesArray) setShowTimeSelector(true)
