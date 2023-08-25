@@ -69,8 +69,8 @@ const MakeAppointmentForm = ({ schedule, id }) => {
                     <div className="flex flex-wrap gap-3">
                         {times.map((item, i) => {
                             const startTime = moment(item.startTime)
-                            const isDisabled = startTime.isBefore(moment())
-                            const isSameDay = moment(date).isSame(moment(), 'date')
+                            // const isDisabled = startTime.isBefore(moment())
+                            // const isSameDay = moment(date).isSame(moment(), 'date')
                             return (
                                 <label key={i} >
                                     <input
@@ -79,7 +79,7 @@ const MakeAppointmentForm = ({ schedule, id }) => {
                                         className="form-radio h-5 w-5"
                                         value={item._id}
                                         onChange={handleRadioButton}
-                                        disabled={isSameDay && isDisabled}
+                                        // disabled={isSameDay && isDisabled}
                                     />
                                     <span className={`ml-2 ${(isSameDay && isDisabled) ? 'text-gray-400' : ''}`}>
                                         {startTime.format('HH:mm A')} - {moment(item.endTime).format('HH:mm A')}
