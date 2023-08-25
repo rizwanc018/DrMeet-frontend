@@ -12,7 +12,9 @@ const MakeAppointmentForm = ({ schedule, id }) => {
     const [days, setDays] = useState([]) // doc scheduled days, passed from parent component
     const [date, setDate] = useState(new Date()); // booking date
     const [times, setTimes] = useState() // booking time
+    console.log({times})
     const [showTimeSelector, setShowTimeSelector] = useState(false)
+    console.log({showTimeSelector})
     const [timeId, setTimeId] = useState('') // time choosen
     const [showBooking, setShowBooking] = useState(false)
     const [errMsg, setErrMsg] = useState()
