@@ -30,6 +30,9 @@ function AdminLogin() {
         setPasswordValid(true)
         const body = { email, password }
         let response = await AxiosBackend.post(`/api/admin/auth`, body)
+        if (response) {
+          localStorage.setItem('token', response.data.token)
+        }
         dispatch(setCredentials({ ...response.data }))
         setShowSpinner(false)
         if (response.data.isAdmin) navigate('/admin')

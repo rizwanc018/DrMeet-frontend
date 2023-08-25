@@ -18,9 +18,9 @@ function DoctorLoginForm() {
     const emailRef = useRef()
 
     const { userInfo } = useSelector(state => state.auth)
-  
+
     useEffect(() => {
-      emailRef.current.focus()
+        emailRef.current.focus()
     }, [])
 
     useEffect(() => {
@@ -42,6 +42,9 @@ function DoctorLoginForm() {
 
             try {
                 const response = await AxiosBackend.post(`/api/doc/auth`, { ...values })
+                if (response) {
+                    localStorage.setItem('token', response.data.token)
+                }
                 dispatch(setCredentials({ ...response.data }))
                 navigate('/doctor')
             } catch (error) {

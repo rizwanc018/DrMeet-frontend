@@ -43,10 +43,15 @@ const UserLoginForm = () => {
 
       try {
         const response = await AxiosBackend.post(`/api/user/auth`, { ...values })
+        if(response) {
+          localStorage.setItem('token', response.data.token)
+        }
         dispatch(setCredentials({ ...response.data }))
         navigate('/')
       } catch (error) {
+        console.log(error)
         setErr(error.response.data.msg)
+        setSubmitting(false)
       }
       setSubmitting(false)
     }

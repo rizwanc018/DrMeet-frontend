@@ -8,6 +8,10 @@ const MakeAppointment = () => {
   const [scheduleDays, setScheduleDays] = useState([])
   const { id } = useParams()
 
+  // const token = localStorage.getItem('token')
+  // const headers={autorization:token}
+  // console.log(token);
+
   const fetchData = async (id) => {
     try {
       const [doctorResponse, scheduleResponse] = await Promise.all([
